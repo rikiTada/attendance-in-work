@@ -75,12 +75,9 @@
   }
 }
 
-a {
-  border-bottom: 1px solid;
-  border-color: blue;
-  color: blue;
-}
-
-a:hover {
-  opacity: 0.5;
+body {
+  font-family: "Noto Sans JP", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  min-width: 20rem;
+  min-height: 20rem;
 }
