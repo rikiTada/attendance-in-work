@@ -7,6 +7,7 @@
   "permissions": ["activeTab", "tabs", "storage", "scripting", "bookmarks"],
   "host_permissions": ["https://attendance.moneyforward.com/my_page*"],
   "action": {
+    "default_popup": "index.html",
     "default_icon": {
       "48": "images/extension_48.png"
     }
