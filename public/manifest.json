@@ -18,7 +18,7 @@
       "48": "images/extension_48.png"
     }
   },
-  "background": {
-    "service_worker": "extensions/background.js"
+  "icons": {
+    "48": "images/extension_48.png"
   }
 }
