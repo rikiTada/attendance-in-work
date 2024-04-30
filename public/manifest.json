@@ -1,0 +1,24 @@
+{
+  "name": "MF出退勤",
+  "description": "MF出退勤",
+  "author": "MF出退勤",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "scripting",
+    "bookmarks",
+    "webNavigation"
+  ],
+  "host_permissions": ["https://attendance.moneyforward.com/my_page*"],
+  "action": {
+    "default_icon": {
+      "48": "images/extension_48.png"
+    }
+  },
+  "background": {
+    "service_worker": "extensions/background.js"
+  }
+}
