@@ -4,20 +4,19 @@
   "author": "MF出退勤",
   "version": "1.0.0",
   "manifest_version": 3,
-  "permissions": [
-    "activeTab",
-    "tabs",
-    "storage",
-    "scripting",
-    "bookmarks",
-    "webNavigation"
-  ],
+  "permissions": ["activeTab", "tabs", "storage", "scripting", "bookmarks"],
   "host_permissions": ["https://attendance.moneyforward.com/my_page*"],
   "action": {
     "default_icon": {
       "48": "images/extension_48.png"
     }
   },
+  "content_scripts": [
+    {
+      "matches": ["https://attendance.moneyforward.com/my_page*"],
+      "js": ["content.js"]
+    }
+  ],
   "icons": {
     "48": "images/extension_48.png"
   }
