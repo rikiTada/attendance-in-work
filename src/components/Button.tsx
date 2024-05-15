@@ -30,12 +30,9 @@ export const LinkButton = ({ title, onClick }: ButtonProps) => {
   return (
     <button
       onClick={onClick}
-      class="p-2 rounded bg-indigo-800 hover:bg-indigo-900 items-center text-indigo-100 leading-none flex"
+      class="w-full p-2 rounded bg-indigo-800 hover:bg-indigo-900 items-center text-indigo-100 leading-none flex"
     >
-      <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">
-        Open
-      </span>
-      <span class="font-semibold whitespace-nowrap mr-2 text-left flex-auto ">
+      <span class="font-semibold whitespace-nowrap flex-auto ml-2">
         {title}
       </span>
       <RightArrowIcon />
