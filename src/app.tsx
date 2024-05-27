@@ -1,7 +1,10 @@
 import { storageName } from "./index";
 import { Button, LinkButton, Title } from "./components";
-import { getChromeStorage } from "./service/storage";
+import { getChromeStorage } from "@/service/storage";
 import { useMemo, useState } from "preact/hooks";
+import { Storage as StorageType } from "@/types/storageType";
+import { Details } from "./components/Details";
+import { clearChromeStorage } from "./service/storage";
 
 export const App = () => {
   const url = "https://attendance.moneyforward.com/my_page";
@@ -18,9 +21,17 @@ export const App = () => {
     { title: "退勤", location: "clock_out" },
   ];
 
-  const [storage, setStorage] = useState([{ type: "", Date: "" }]);
+  const [storage, setStorage] = useState<StorageType>([]);
 
-  console.log(storage);
+  console.log("app.tsx:", storage);
+
+  const clearStorage = async () => {
+    const res = confirm("ログを削除してよろしいですか?");
+    if (!res) return;
+
+    clearChromeStorage();
+    setStorage([]);
+  };
 
   useMemo(async () => {
     setStorage(await getChromeStorage(storageName));
@@ -29,7 +40,6 @@ export const App = () => {
   return (
     <div class="m-8">
       <Title title="出勤・退勤" />
-
       {buttons.map((button) => (
         <div class="my-2">
           <Button
@@ -38,31 +48,15 @@ export const App = () => {
           />
         </div>
       ))}
-
       <hr class="my-4" />
-
       <div class="my-2">
         <LinkButton
           title="マネーフォワードで確認する"
           onClick={() => chrome.tabs.create({ url })}
         />
       </div>
-      <div className={"my-2 flex justify-center"}>
-        <details className="w-full text-sm text-gray-500">
-          <summary>ログを確認する</summary>
-          {storage ? (
-            storage.map((log) => (
-              <p className={"pl-4 py-1"}>
-                {log.type}: {log.Date}
-              </p>
-            ))
-          ) : (
-            <>
-              <p className="pl-4 py-1">- ログはありません -</p>
-            </>
-          )}
-        </details>
-      </div>
+
+      <Details storage={storage} onClick={clearStorage} />
     </div>
   );
 };

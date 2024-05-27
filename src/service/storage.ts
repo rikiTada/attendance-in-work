@@ -1,4 +1,4 @@
-import { env } from "../index";
+import { env } from "@/index";
 
 /**
  *	ChromeStrageへの保存

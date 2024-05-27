@@ -1,3 +1,31 @@
+/**
+ *	ChromeStrageの全件取得
+ * @param key
+ * @returns Array
+ */
+const getChromeStorage = async (key) => {
+  const data = await chrome.storage.local.get([key]);
+  return data[key];
+};
+
+/**
+ *	ChromeStrageへの保存
+ * @param key
+ * @param value
+ */
+const setChromeStorage = async (key, newData) => {
+  try {
+    const existingData = await getChromeStorage(key);
+    const isEmpty = !existingData || existingData?.length === 0;
+
+    const updatedData = isEmpty ? [newData] : [...existingData, newData];
+
+    await chrome.storage.local.set({ [key]: updatedData });
+  } catch (error) {
+    console.error(`保存に失敗しました: ${error}`);
+  }
+};
+
 const url = window.location.href;
 const mfURL = "https://attendance.moneyforward.com/my_page";
 const selectedData = [
@@ -23,6 +51,11 @@ window.onload = () => {
 
     if (res) {
       buttons[selectedIndex].click();
+
+      setChromeStorage("attendance", {
+        type: selectedData[selectedIndex].type,
+        Date: new Date().toLocaleString(),
+      });
 
       setTimeout(() => {
         window.close();

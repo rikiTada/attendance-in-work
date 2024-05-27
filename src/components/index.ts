@@ -1,4 +1,4 @@
-import { Button, LinkButton } from "./Button";
+import { Button, LinkButton, IconButton } from "./Button";
 import { Title } from "./Title";
 
-export { Button, LinkButton, Title };
+export { Button, LinkButton, IconButton, Title };

@@ -1,3 +1,5 @@
+import { Trash2 } from "lucide-react";
+
 type ButtonProps = {
   title: string;
   onClick: () => void;
@@ -36,6 +38,18 @@ export const LinkButton = ({ title, onClick }: ButtonProps) => {
         {title}
       </span>
       <RightArrowIcon />
+    </button>
+  );
+};
+
+export const IconButton = ({ title, onClick }: ButtonProps) => {
+  return (
+    <button
+      onClick={onClick}
+      class="my-2 bg-red-100 hover:bg-red-200 flex gap-2 items-center min-w-6 p-2 rounded"
+    >
+      {title}
+      <Trash2 size={16} />
     </button>
   );
 };
