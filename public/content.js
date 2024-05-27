@@ -10,8 +10,6 @@ const selectedData = [
 window.onload = () => {
   if (!url.includes(mfURL)) return;
 
-  console.group("拡張機能を実行します");
-
   const buttons = document.querySelectorAll(".time-stamp-button");
 
   const hashId = url.split("#")[1];
@@ -21,14 +19,18 @@ window.onload = () => {
   );
 
   if (selectedIndex !== -1) {
-    buttons[selectedIndex].click();
+    const res = confirm(`${selectedData[selectedIndex].type}しますか?`);
 
-    setTimeout(() => {
+    if (res) {
+      buttons[selectedIndex].click();
+
+      setTimeout(() => {
+        window.close();
+        alert(`${selectedData[selectedIndex].type}しました`);
+      }, 500);
+    } else {
+      alert(`キャンセルしました。ウィンドウを閉じます。`);
       window.close();
-      alert(`${selectedData[selectedIndex].type}しました`);
-    }, 500);
-  } else {
-    console.log(`ハッシュタグ "${hashId}" に対応するデータが見つかりません。`);
+    }
   }
-  console.groupEnd();
 };
