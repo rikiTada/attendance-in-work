@@ -1,4 +1,5 @@
 import { env } from "@/index";
+import { mockData } from "./mockData";
 
 /**
  *	ChromeStrageへの保存
@@ -23,13 +24,6 @@ export const setChromeStorage = async (
     console.error(`ノートの保存に失敗しました: ${error}`);
   }
 };
-
-const mockData = [
-  { type: "出勤", Date: "2022/01/01 10:00:00" },
-  { type: "休憩開始", Date: "2022/01/01 10:00:00" },
-  { type: "休憩終了", Date: "2022/01/01 10:00:00" },
-  { type: "退勤", Date: "2022/01/01 10:00:00" },
-];
 
 /**
  *	ChromeStrageの全件取得
