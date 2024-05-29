@@ -46,7 +46,7 @@ export const IconButton = ({ title, onClick }: ButtonProps) => {
   return (
     <button
       onClick={onClick}
-      class="my-2 bg-red-100 hover:bg-red-200 flex gap-2 items-center min-w-6 p-2 rounded"
+      class="my-2 w-full text-white font-medium bg-red-500 hover:bg-red-500/80 flex gap-2 justify-center items-center min-w-6 p-2 rounded"
     >
       {title}
       <Trash2 size={16} />

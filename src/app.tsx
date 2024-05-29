@@ -34,7 +34,8 @@ export const App = () => {
   };
 
   useMemo(async () => {
-    setStorage(await getChromeStorage(storageName));
+    const data = await getChromeStorage(storageName);
+    setStorage([...data].reverse());
   }, []);
 
   return (
