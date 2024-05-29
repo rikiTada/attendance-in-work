@@ -12,7 +12,7 @@ export const Details = ({
 }) => {
   return (
     <div class={"my-6 flex justify-center"}>
-      <details class="w-full text-sm text-gray-500">
+      <details class="w-full text-sm text-gray-500 transition-all duration-300 ">
         <summary
           class={
             "cursor-pointer border p-2 px-4 rounded-sm outline-none hover:bg-zinc-100"
@@ -24,11 +24,24 @@ export const Details = ({
           <>
             {[...storage].map((log, idx) =>
               idx <= 4 ? (
-                <div class={"py-2 border-b-2"}>
+                <div class={"py-2 border-b-[1.5px] relative"}>
+                  {idx === 0 && (
+                    <span
+                      class={
+                        "text-green-500 absolute -left-1 top-1/2 -translate-y-1/2 text-[0.5rem] [writing-mode:vertical-rl]"
+                      }
+                    >
+                      最近
+                    </span>
+                  )}
                   <p class={"px-4 py-1 flex items-center"}>
                     <Badge title={log.type} color={changeColor(log.type)} />
                     <span class="flex-1"></span>
-                    <span class="tabular-nums">{zeroPadding(log.Date)}</span>
+                    <span
+                      class={`${idx === 0 && "text-green-500"} tabular-nums`}
+                    >
+                      {zeroPadding(log.Date)}
+                    </span>
                   </p>
                 </div>
               ) : (
