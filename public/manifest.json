@@ -4,7 +4,7 @@
   "author": "MF出退勤",
   "version": "1.0.0",
   "manifest_version": 3,
-  "permissions": ["activeTab", "tabs", "storage", "scripting"],
+  "permissions": ["storage"],
   "host_permissions": ["https://attendance.moneyforward.com/my_page*"],
   "action": {
     "default_popup": "index.html",
