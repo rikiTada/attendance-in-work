@@ -1,0 +1,1 @@
+export const CURRENT_URL = "https://attendance.moneyforward.com";

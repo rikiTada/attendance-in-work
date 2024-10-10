@@ -5,9 +5,10 @@ import { useMemo, useState } from "preact/hooks";
 import { Storage as StorageType } from "@/types/storageType";
 import { Details } from "./components/Details";
 import { clearChromeStorage } from "./service/storage";
+import { CURRENT_URL } from "@/lib/const";
 
 export const App = () => {
-  const url = "https://attendance.moneyforward.com/my_page";
+  const url =`${CURRENT_URL}/my_page`;
 
   const createTab = (hash: string) => {
     const createdURL = `${url}${hash}`;
@@ -22,8 +23,6 @@ export const App = () => {
   ];
 
   const [storage, setStorage] = useState<StorageType>([]);
-
-  console.log("app.tsx:", storage);
 
   const clearStorage = async () => {
     const res = confirm("ログを削除してよろしいですか?");
